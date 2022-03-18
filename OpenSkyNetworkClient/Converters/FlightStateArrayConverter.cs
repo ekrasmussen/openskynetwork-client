@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OpenSkyNetworkClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
