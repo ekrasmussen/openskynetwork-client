@@ -27,18 +27,6 @@ namespace OpenSkyNetworkClient.APIAccess
             serializer = new JsonSerializer();
         }
 
-        protected Connection(string username, string password)
-            : this()
-        {
-            if (string.IsNullOrWhiteSpace(username))
-                throw new ArgumentNullException(nameof(username));
-
-            if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentNullException(nameof(password));
-
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{password}")));
-        }
-
 
         protected async Task<TResult> GetAsync<TResult>(string uriPath, CancellationToken token = default)
         {
