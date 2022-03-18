@@ -15,7 +15,7 @@ namespace OpenSkyNetworkClient.Converters
         public override bool CanRead => true;
         public override bool CanWrite => false;
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if(reader.TokenType == JsonToken.StartArray)
             {
@@ -25,7 +25,7 @@ namespace OpenSkyNetworkClient.Converters
             return null;
         }
 
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
