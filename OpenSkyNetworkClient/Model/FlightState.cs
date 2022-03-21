@@ -12,6 +12,10 @@ namespace OpenSkyNetworkClient.Model
     [JsonConverter(typeof(FlightStateConverter))]
     class FlightState : IFlightState
     {
+        public FlightState(string icao)
+        {
+            Icao24 = icao;
+        }
         public string Icao24 { get; set; }
         public string CallSign { get; set; }
         public string OriginCountry { get; set; }

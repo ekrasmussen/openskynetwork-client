@@ -22,7 +22,7 @@ namespace OpenSkyNetworkClient.Converters
         {
             var jsonArray = JArray.Load(reader);
 
-            return new FlightState
+            return new FlightState("N/A")
             {
                 Icao24 = jsonArray[0].Value<string>(),
                 CallSign = jsonArray[1].Value<string>()?.Trim(),

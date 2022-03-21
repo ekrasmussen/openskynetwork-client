@@ -1,4 +1,5 @@
 ﻿using OpenSkyNetworkClient.Interfaces;
+using OpenSkyNetworkClient.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,18 +13,16 @@ namespace OpenSkyNetworkClient
     {
         readonly OpenSkyNetClient client;
         ObservableCollection<IFlightState> Observers;
-        List<string> icao24s;
 
         public CustomTrackingGroup(OpenSkyNetClient _client)
         {
             client = _client;
-            icao24s = new List<string>();
             Observers = new ObservableCollection<IFlightState>();
         }
 
         public async Task Update()
         {
-            var flights = await client.GetCustomStatesAsync(icao24s.ToArray());
+            var flights = await client.GetCustomStatesAsync(Observers.Select(s => s.Icao24).ToArray());
 
             //Find the icaos in observers and update the info
             if(flights != null)
@@ -46,19 +45,16 @@ namespace OpenSkyNetworkClient
 
         public void Subscribe(string icao24)
         {
-            if(!icao24s.Contains(icao24))
-            { 
-                icao24s.Add(icao24);
+            if(!Observers.Any(s => s.Icao24 == icao24))
+            {
+                IFlightState flight = new FlightState(icao24);
+                Observers.Add(flight);
             }
         }
 
         public void Unsubscribe(string icao24)
         {
-            if(icao24s.Contains(icao24))
-            {
-                icao24s.Remove(icao24);
-                Observers.Remove(Observers.Single(s => s.Icao24 == icao24));
-            }
+            Observers.Remove(Observers.Single(s => s.Icao24 == icao24));
         }
     }
 }
