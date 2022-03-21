@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
-    internal class CustomTrackingGroup
+    public class CustomTrackingGroup
     {
         readonly OpenSkyNetClient client;
-        ObservableCollection<IFlightState> Observers;
+        public ObservableCollection<IFlightState> Observers { get; }
 
         public CustomTrackingGroup(OpenSkyNetClient _client)
         {

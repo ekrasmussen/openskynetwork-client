@@ -4,6 +4,7 @@ using OpenSkyNetworkClient.Model;
 using OpenSkyNetworkClient.Tool;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -62,8 +63,18 @@ namespace OpenSkyNetworkClient
 
                 query += RequestStringBuilder.Create(dict);
             }
-
+            Console.WriteLine(query);
             return GetAsync<IFlightStates>(query, token);
+        }
+
+        public ObservableCollection<IFlightState> GetCustomList()
+        {
+            return trackingManager.customGroup.Observers;
+        }
+
+        public ObservableCollection<IFlightState> GetProximityList()
+        {
+            return trackingManager.proximityGroup.Observers;
         }
     }
 }

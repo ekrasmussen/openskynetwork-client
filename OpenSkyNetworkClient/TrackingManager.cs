@@ -9,8 +9,8 @@ namespace OpenSkyNetworkClient
 {
     public class TrackingManager
     {
-        CustomTrackingGroup customGroup;
-        ProximityTrackingGroup proximityGroup;
+        public CustomTrackingGroup customGroup { get; }
+        public ProximityTrackingGroup proximityGroup {get;} 
 
         public TrackingManager(OpenSkyNetClient client, CancellationToken token)
         {
@@ -31,9 +31,8 @@ namespace OpenSkyNetworkClient
 
         async Task OnTick(CancellationToken token)
         {
-            await UpdateProximityGroup(token);
-            await UpdateCustomGroup(token);
-            Console.WriteLine("------------------------------------------");
+            UpdateCustomGroup(token);
+            UpdateProximityGroup(token);
         }
 
         async Task UpdateCustomGroup(CancellationToken token)

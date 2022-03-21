@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
-    internal class ProximityTrackingGroup
+    public class ProximityTrackingGroup
     {
         readonly OpenSkyNetClient client;
-        ObservableCollection<IFlightState> Observers;
+        public ObservableCollection<IFlightState> Observers { get; }
         BoundingBox bbox;
 
 
