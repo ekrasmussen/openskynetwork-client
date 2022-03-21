@@ -30,16 +30,16 @@ namespace OpenSkyNetworkClient
 
         async Task OnTick(CancellationToken token)
         {
-            await Task.WhenAll(UpdateCustomGroup(), UpdateProximityGroup());
+            await Task.WhenAll(UpdateCustomGroup(token), UpdateProximityGroup(token));
         }
 
-        async Task UpdateCustomGroup()
+        async Task UpdateCustomGroup(CancellationToken token)
         {
             //Placeholder
             await Task.Delay(1);
         }
 
-        async Task UpdateProximityGroup()
+        async Task UpdateProximityGroup(CancellationToken token)
         {
             //Placeholder
             await Task.Delay(1);
