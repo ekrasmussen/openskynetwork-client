@@ -59,6 +59,11 @@ namespace OpenSkyNetworkClient.Interfaces
         float? Velocity { get; }
 
         /// <summary>
+        /// Heading of Aircraft in clicks
+        /// </summary>
+        float? Heading { get; }
+
+        /// <summary>
         /// Heading in decimal degrees clockwise from north (i.e. north=0°). Can be null.
         /// </summary>
         float? TrueTrack { get; }

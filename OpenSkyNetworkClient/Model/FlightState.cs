@@ -16,7 +16,7 @@ namespace OpenSkyNetworkClient.Model
         {
             Icao24 = icao;
         }
-        public string Icao24 { get; set; }
+        public string Icao24 { get; set; } 
         public string CallSign { get; set; }
         public string OriginCountry { get; set; }
         public DateTime? TimePosition { get; set; }
@@ -37,7 +37,25 @@ namespace OpenSkyNetworkClient.Model
 
         public void Update(IFlightState flightState)
         {
-            Console.WriteLine("LETS GOOO - " + Icao24);
+            Icao24 = flightState.Icao24;
+            CallSign = flightState.CallSign;
+            OriginCountry = flightState.OriginCountry;
+            TimePosition = flightState.TimePosition;
+            LastContact = flightState.LastContact;
+            Longitude = flightState.Longitude;
+            Latitude = flightState.Latitude;
+            GeoAltitude = flightState.GeoAltitude;
+            OnGround = flightState.OnGround;
+            Velocity = flightState.Velocity;
+            Heading = flightState.Heading;
+            VerticalRate = flightState.VerticalRate;
+            Sensors = flightState.Sensors;
+            BaroAltitude = flightState.BaroAltitude;
+            Squawk = flightState.Squawk;
+            Spi = flightState.Spi;
+            PositionSource = flightState.PositionSource;
+            TrueTrack = flightState.TrueTrack;
+            Console.WriteLine("UPDATED");
         }
     }
 }
