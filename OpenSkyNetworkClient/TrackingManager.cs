@@ -33,6 +33,7 @@ namespace OpenSkyNetworkClient
         {
             await UpdateProximityGroup(token);
             await UpdateCustomGroup(token);
+            Console.WriteLine("------------------------------------------");
         }
 
         async Task UpdateCustomGroup(CancellationToken token)
@@ -43,7 +44,6 @@ namespace OpenSkyNetworkClient
         async Task UpdateProximityGroup(CancellationToken token)
         {
             await proximityGroup.Update();
-            Console.WriteLine("run again");
         }
 
 

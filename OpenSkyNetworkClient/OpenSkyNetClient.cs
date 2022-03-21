@@ -63,7 +63,6 @@ namespace OpenSkyNetworkClient
                 query += RequestStringBuilder.Create(dict);
             }
 
-            Console.WriteLine(query);
             return GetAsync<IFlightStates>(query, token);
         }
     }
