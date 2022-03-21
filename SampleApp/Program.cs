@@ -3,15 +3,10 @@ using OpenSkyNetworkClient;
 
 OpenSkyNetClient client = new OpenSkyNetClient();
 
+client.StartTracking("a46e70");
+client.StartTracking("aa56da");
 
-var flights = client.GetAllStatesAsync().Result;
-
-string[] icaos = { "aae327", "ab5ce4" };
-
-var customFlights = client.GetCustomStatesAsync(icaos).Result;
-
-await Task.Delay(5000);
-Console.WriteLine($"{flights.States.Length}");
-Console.WriteLine(customFlights.States.Length);
-
+await Task.Delay(10000);
+Console.WriteLine("Stopped Tracking the first");
+client.StopTracking("a46e70");
 Console.ReadKey();

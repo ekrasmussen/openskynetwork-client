@@ -92,5 +92,7 @@ namespace OpenSkyNetworkClient.Interfaces
         /// Origin of this state’s position: 0 = ADS-B, 1 = ASTERIX, 2 = MLAT
         /// </summary>
         int PositionSource { get; }
+
+        public void Update(IFlightState flightState);
     }
 }

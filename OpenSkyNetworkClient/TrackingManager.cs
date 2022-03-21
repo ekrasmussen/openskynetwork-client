@@ -22,10 +22,20 @@ namespace OpenSkyNetworkClient
         {
             while(!token.IsCancellationRequested)
             {
-                await Task.Delay(5000);
+                await Task.Delay(2500);
                 await OnTick(token);
             }
 
+        }
+
+        public void StartTracking(string icao24)
+        {
+            customGroup.Subscribe(icao24);
+        }
+
+        public void StopTracking(string icao24)
+        {
+            customGroup.Unsubscribe(icao24);
         }
 
         async Task OnTick(CancellationToken token)
@@ -35,8 +45,7 @@ namespace OpenSkyNetworkClient
 
         async Task UpdateCustomGroup(CancellationToken token)
         {
-            //Placeholder
-            await Task.Delay(1);
+            await customGroup.Update();
         }
 
         async Task UpdateProximityGroup(CancellationToken token)

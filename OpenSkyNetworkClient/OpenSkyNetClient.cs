@@ -20,8 +20,22 @@ namespace OpenSkyNetworkClient
             trackingManager = new TrackingManager(this, tokenSource.Token);
         }
 
+        public void StartTracking(string icao24) => trackingManager.StartTracking(icao24);
+        public void StopTracking(string icao24) => trackingManager.StopTracking(icao24);
+
         public Task<IFlightStates> GetAllStatesAsync(CancellationToken token = default) => GetStatesBasicAsync("states/all", null, null, token);
-        public Task<IFlightStates> GetCustomStatesAsync(string[] icao24s, CancellationToken token = default) => GetStatesBasicAsync("states/all", icao24s, null, token);
+        public Task<IFlightStates> GetCustomStatesAsync(string[] icao24s, CancellationToken token = default)
+        {
+            if( icao24s != null && icao24s.Length > 0)
+            {
+                return GetStatesBasicAsync("states/all", icao24s, null, token);
+            }
+
+            else
+            {
+                return null;
+            }
+        }
         public Task<IFlightStates> GetProximityStatesAsync(BoundingBox bbox, CancellationToken token = default) => GetStatesBasicAsync("states/all", null, bbox, token);
 
         Task<IFlightStates> GetStatesBasicAsync(string query, string[] icao24s = null, BoundingBox bbox = null, CancellationToken token = default)

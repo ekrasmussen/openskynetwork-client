@@ -30,5 +30,10 @@ namespace OpenSkyNetworkClient.Model
         public bool Spi { get; set; }
         public int PositionSource { get; set; }
         public float? TrueTrack { get; set; }
+
+        public void Update(IFlightState flightState)
+        {
+            Console.WriteLine("LETS GOOO - " + Icao24);
+        }
     }
 }

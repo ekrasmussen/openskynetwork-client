@@ -21,6 +21,29 @@ namespace OpenSkyNetworkClient
             Observers = new ObservableCollection<IFlightState>();
         }
 
+        public async Task Update()
+        {
+            var flights = await client.GetCustomStatesAsync(icao24s.ToArray());
+
+            //Find the icaos in observers and update the info
+            if(flights != null)
+            {
+                foreach (var flight in flights.States)
+                {
+                    var ifs = Observers.FirstOrDefault(s => s.Icao24 == flight.Icao24);
+
+                    if (ifs != null)
+                    {
+                        ifs.Update(flight);
+                    }
+                    else
+                    {
+                        Observers.Add(flight);
+                    }
+                }
+            }
+        }
+
         public void Subscribe(string icao24)
         {
             if(!icao24s.Contains(icao24))
