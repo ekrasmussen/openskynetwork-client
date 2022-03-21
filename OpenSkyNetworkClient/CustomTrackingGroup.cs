@@ -28,5 +28,14 @@ namespace OpenSkyNetworkClient
                 icao24s.Add(icao24);
             }
         }
+
+        public void Unsubscribe(string icao24)
+        {
+            if(icao24s.Contains(icao24))
+            {
+                icao24s.Remove(icao24);
+                Observers.Remove(Observers.Single(s => s.Icao24 == icao24));
+            }
+        }
     }
 }

@@ -4,10 +4,14 @@ using OpenSkyNetworkClient;
 OpenSkyNetClient client = new OpenSkyNetClient();
 
 
-//var flights = await client.GetAllStatesAsync();
+var flights = client.GetAllStatesAsync().Result;
 
-//string[] icaos = { "aae327", "ab5ce4" };
+string[] icaos = { "aae327", "ab5ce4" };
 
-//var customFlights = await client.GetCustomStatesAsync(icaos);
+var customFlights = client.GetCustomStatesAsync(icaos).Result;
 
-//Console.WriteLine(flights.States[0].CallSign);
+await Task.Delay(5000);
+Console.WriteLine($"{flights.States.Length}");
+Console.WriteLine(customFlights.States.Length);
+
+Console.ReadKey();
