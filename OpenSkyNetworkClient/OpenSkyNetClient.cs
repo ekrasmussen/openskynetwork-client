@@ -61,11 +61,10 @@ namespace OpenSkyNetworkClient
                 dict.Add("lomax", bbox.MaxLon);
 
                 query += RequestStringBuilder.Create(dict);
-                Console.WriteLine(query);
-                
             }
-                
-                return GetAsync<IFlightStates>(query, token);
+
+            Console.WriteLine(query);
+            return GetAsync<IFlightStates>(query, token);
         }
     }
 }
