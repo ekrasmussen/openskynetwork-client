@@ -8,15 +8,15 @@ namespace OpenSkyNetworkClient.Model
 {
     public class BoundingBox
     {
-        public float MinLat, MinLon;
-        public float MaxLat, MaxLon;
+        public double MinLat, MinLon;
+        public double MaxLat, MaxLon;
 
-        public BoundingBox(float _minlat, float _minlon, float _maxlat, float _maxlon)
-        { 
-            MinLat = _minlat;
-            MinLon = _minlon;
-            MaxLat = _maxlat;
-            MaxLon = _maxlon;
+        public BoundingBox(double _minlat, double _minlon, double _maxlat, double _maxlon)
+        {
+            MinLat = Math.Round(_minlat, 6, MidpointRounding.AwayFromZero);
+            MinLon = Math.Round(_minlon, 6, MidpointRounding.AwayFromZero);
+            MaxLat = Math.Round(_maxlat, 6, MidpointRounding.AwayFromZero);
+            MaxLon = Math.Round(_maxlon, 6, MidpointRounding.AwayFromZero);
         }
     }
 }

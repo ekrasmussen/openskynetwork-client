@@ -54,7 +54,7 @@ namespace OpenSkyNetworkClient
 
         public void Unsubscribe(string icao24)
         {
-            Observers.Remove(Observers.Single(s => s.Icao24 == icao24));
+            Observers.Remove(Observers.FirstOrDefault(s => s.Icao24 == icao24));
         }
     }
 }
