@@ -44,6 +44,9 @@ namespace OpenSkyNetworkClient
         }
         public Task<IFlightStates> GetProximityStatesAsync(BoundingBox bbox, CancellationToken token = default) => GetStatesBasicAsync("states/all", null, bbox, token);
 
+        public Task<IFlightRoute> GetRouteAsync(IFlightState state, CancellationToken token = default) => throw new NotImplementedException();
+        //To be implemented
+
         Task<IFlightStates> GetStatesBasicAsync(string query, string[] icao24s = null, BoundingBox bbox = null, CancellationToken token = default)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
