@@ -10,12 +10,12 @@ namespace OpenSkyNetworkClient
 {
     internal class ProximityTrackingGroup
     {
-        readonly OpenSkyNetworkClient client;
+        readonly OpenSkyNetClient client;
         List<IFlightState> Observers;
         BoundingBox bbox;
 
 
-        public ProximityTrackingGroup(OpenSkyNetworkClient _client)
+        public ProximityTrackingGroup(OpenSkyNetClient _client)
         {
             client = _client;
             Observers = new List<IFlightState>();

@@ -8,6 +8,9 @@ namespace OpenSkyNetworkClient.Interfaces
 {
     public interface IFlightState
     {
+        /// <summary>
+        /// Unique ICAO 24-bit address of the transponder in hex string representation.
+        /// </summary>
         string Icao24 { get; }
 
         /// <summary>

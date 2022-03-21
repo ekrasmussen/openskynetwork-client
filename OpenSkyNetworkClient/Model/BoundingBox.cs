@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient.Model
 {
-    internal class BoundingBox
+    public class BoundingBox
     {
-        float minlat, minlon;
-        float maxlat, maxlon;
+        public float MinLat, MinLon;
+        public float MaxLat, MaxLon;
 
         public BoundingBox(float _minlat, float _minlon, float _maxlat, float _maxlon)
         { 
-            minlat = _minlat;
-            minlon = _minlon;
-            maxlat = _maxlat;
-            maxlon = _maxlon;
+            MinLat = _minlat;
+            MinLon = _minlon;
+            MaxLat = _maxlat;
+            MaxLon = _maxlon;
         }
     }
 }

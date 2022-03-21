@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OpenSkyNetworkClient.Converters;
+using OpenSkyNetworkClient.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace OpenSkyNetworkClient.Model
 {
     [JsonConverter(typeof(FlightStateConverter))]
-    class FlightState
+    class FlightState : IFlightState
     {
         public string Icao24 { get; set; }
         public string CallSign { get; set; }

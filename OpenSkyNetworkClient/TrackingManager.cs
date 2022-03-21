@@ -11,7 +11,7 @@ namespace OpenSkyNetworkClient
         CustomTrackingGroup customGroup;
         ProximityTrackingGroup proximityGroup;
 
-        public TrackingManager(OpenSkyNetworkClient client, CancellationToken token)
+        public TrackingManager(OpenSkyNetClient client, CancellationToken token)
         {
             customGroup = new CustomTrackingGroup(client);
             proximityGroup = new ProximityTrackingGroup(client);
