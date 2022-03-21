@@ -52,7 +52,7 @@ namespace OpenSkyNetworkClient
                 query += RequestStringBuilder.Create(icao24s);
             }
 
-            else if(bbox != null)
+            else if (bbox != null)
             {
                 Dictionary<string, object> dict = new Dictionary<string, object>();
                 dict.Add("lamin", bbox.MinLat);
