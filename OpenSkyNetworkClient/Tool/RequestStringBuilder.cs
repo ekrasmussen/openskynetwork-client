@@ -26,5 +26,19 @@ namespace OpenSkyNetworkClient.Tool
 
             return query;
         }
+
+        public static string Create(string[] icaos)
+        {
+            string query = "?";
+
+            foreach(string icao in icaos)
+            {
+                query += $"icao24={icao}&";
+            }
+
+            query.TrimEnd('&');
+
+            return query;
+        }
     }
 }
