@@ -20,7 +20,7 @@ namespace OpenSkyNetworkClient
 
         async Task StartTimer(CancellationToken token)
         {
-            for(int i = 0; i < 100; i++)
+            while(!token.IsCancellationRequested)
             {
                 await Task.Delay(5000);
                 await OnTick(token);
