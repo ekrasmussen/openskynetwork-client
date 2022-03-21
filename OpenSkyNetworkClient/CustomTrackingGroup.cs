@@ -9,11 +9,13 @@ namespace OpenSkyNetworkClient
 {
     internal class CustomTrackingGroup
     {
+        readonly OpenSkyNetworkClient client;
         List<IFlightState> Observers;
         List<string> icao24s;
 
-        public CustomTrackingGroup()
+        public CustomTrackingGroup(OpenSkyNetworkClient _client)
         {
+            client = _client;
             icao24s = new List<string>();
             Observers = new List<IFlightState>();
         }
