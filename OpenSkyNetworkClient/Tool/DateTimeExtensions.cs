@@ -29,6 +29,8 @@ namespace OpenSkyNetworkClient.Tool
 
         public static DateTime FromUnixTimestamp(this int unixTimeStamp)
             => epoch.AddSeconds(unixTimeStamp);
+        //public static DateTime FromUnixTimestamp(this long unixTimeStamp)
+        //    => epoch.AddMilliseconds(unixTimeStamp);
 
         public static DateTime? FromUnixTimestamp(this int? unixTimeStamp)
         {
@@ -37,5 +39,13 @@ namespace OpenSkyNetworkClient.Tool
 
             return unixTimeStamp.Value.FromUnixTimestamp();
         }
+
+        //public static DateTime? FromUnixTimestamp(this long? unixTimeStamp)
+        //{
+        //    if (unixTimeStamp == null)
+        //        return null;
+
+        //    return unixTimeStamp.Value.FromUnixTimestamp();
+        //}
     }
 }

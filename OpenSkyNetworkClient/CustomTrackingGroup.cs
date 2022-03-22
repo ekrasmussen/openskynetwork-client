@@ -22,22 +22,25 @@ namespace OpenSkyNetworkClient
 
         public async Task Update()
         {
-            var flights = await client.GetCustomStatesAsync(Observers.Select(s => s.Icao24).ToArray());
-
-            //Find the icaos in observers and update the info
-            if(flights != null)
+            if(Observers != null && Observers.Count > 0)
             {
-                foreach (var flight in flights.States)
-                {
-                    var ifs = Observers.FirstOrDefault(s => s.Icao24 == flight.Icao24);
+                var flights = await client.GetCustomStatesAsync(Observers.Select(s => s.Icao24).ToArray());
 
-                    if (ifs != null)
+                //Find the icaos in observers and update the info
+                if (flights != null)
+                {
+                    foreach (var flight in flights.States)
                     {
-                        ifs.Update(flight);
-                    }
-                    else
-                    {
-                        Observers.Add(flight);
+                        var ifs = Observers.FirstOrDefault(s => s.Icao24 == flight.Icao24);
+
+                        if (ifs != null)
+                        {
+                            ifs.Update(flight);
+                        }
+                        else
+                        {
+                            Observers.Add(flight);
+                        }
                     }
                 }
             }

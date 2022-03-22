@@ -6,9 +6,7 @@ OpenSkyNetClient client = new OpenSkyNetClient();
 
 BoundingBox bbox = new BoundingBox(57.049321f, 9.687195f, 57.150023f, 10.005798f);
 
-client.StartProximityTracking(bbox);
-client.StartTracking("40775c");
+var route = await client.GetRouteAsync("GEC8188");
 
-client.GetRouteAsync("");
-
+Console.WriteLine($"callsign {route.Callsign}, Route from: {route.Route[0]}, Route to: {route.Route[1]}, OperatorIata: {route.OperatorIata}, FlightNumber: {route.FlightNumber}");
 Console.ReadKey();

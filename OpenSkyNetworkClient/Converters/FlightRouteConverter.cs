@@ -25,7 +25,7 @@ namespace OpenSkyNetworkClient.Converters
             {
                 Callsign = jsonArray[0].Value<string>(),
                 Route = jsonArray[1].Value<string[]>(),
-                UpdateTime = jsonArray[2].Value<int>().FromUnixTimestamp(),
+                //UpdateTime = jsonArray[2].Value<long?>().FromUnixTimestamp(),
                 OperatorIata = jsonArray[3].Value<string>(),
                 FlightNumber = jsonArray[4].Value<int>()
             };
