@@ -4,7 +4,7 @@ using OpenSkyNetworkClient.Model;
 
 OpenSkyNetClient client = new OpenSkyNetClient();
 
-BoundingBox bbox = new BoundingBox(55.474184, 12.403564, 55.736389, 12.878723);
+BoundingBox bbox = new BoundingBox(57.040730, 9.656982, 58.222811, 12.864990);
 
 client.StartProximityTracking(bbox);
 

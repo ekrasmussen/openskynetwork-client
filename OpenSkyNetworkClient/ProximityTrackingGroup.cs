@@ -10,16 +10,12 @@ using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
-    public class ProximityTrackingGroup
+    public class ProximityTrackingGroup : TrackingGroup
     {
-        readonly OpenSkyNetClient client;
         public ObservableCollection<IFlightState> Observers { get; }
         BoundingBox bbox;
-
-
-        public ProximityTrackingGroup(OpenSkyNetClient _client)
+        public ProximityTrackingGroup(OpenSkyNetClient client) : base(client)
         {
-            client = _client;
             Observers = new ObservableCollection<IFlightState>();
         }
 
@@ -35,16 +31,7 @@ namespace OpenSkyNetworkClient
 
                     if (ifs != null)
                     {
-
-                        if(ifs.FlightRoute == null)
-                        {
-                            IFlightRoute flightRoute = await client.GetRouteAsync(ifs);
-                            ifs.Update(flight, flightRoute);
-                        }
-                        else
-                        {
-                            ifs.Update(flight);
-                        }
+                        ifs.Update(flight);
                     }
                 }
 
@@ -53,12 +40,14 @@ namespace OpenSkyNetworkClient
             }
         }
 
-        void AddEnteringFlights(IFlightState[] states)
+        async void AddEnteringFlights(IFlightState[] states)
         {
             IEnumerable<IFlightState> enteringFlights = states.ExceptBy(Observers.Select(o => o.Icao24), s => s.Icao24).ToList();
             foreach(var lf in enteringFlights)
             {
                 Console.WriteLine($"FLIGHT {lf.Icao24} ENTERED AIRSPACE");
+                FindRoute(lf);
+
                 Observers.Add(lf);
             }
         }

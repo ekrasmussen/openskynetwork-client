@@ -9,14 +9,12 @@ using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
-    public class CustomTrackingGroup
+    public class CustomTrackingGroup : TrackingGroup
     {
-        readonly OpenSkyNetClient client;
         public ObservableCollection<IFlightState> Observers { get; }
 
-        public CustomTrackingGroup(OpenSkyNetClient _client)
+        public CustomTrackingGroup(OpenSkyNetClient client) : base(client)
         {
-            client = _client;
             Observers = new ObservableCollection<IFlightState>();
         }
 
@@ -39,6 +37,7 @@ namespace OpenSkyNetworkClient
                         }
                         else
                         {
+                            FindRoute(flight);
                             Observers.Add(flight);
                         }
                     }

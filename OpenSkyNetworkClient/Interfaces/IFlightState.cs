@@ -100,6 +100,7 @@ namespace OpenSkyNetworkClient.Interfaces
 
         IFlightRoute FlightRoute { get; }
 
-        public void Update(IFlightState flightState, IFlightRoute flightRoute = null);
+        public void Update(IFlightState flightState);
+        public void AddRoute(IFlightRoute route);
     }
 }
