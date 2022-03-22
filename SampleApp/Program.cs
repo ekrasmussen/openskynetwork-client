@@ -4,9 +4,11 @@ using OpenSkyNetworkClient.Model;
 
 OpenSkyNetClient client = new OpenSkyNetClient();
 
-BoundingBox bbox = new BoundingBox(57.049321f, 9.687195f, 57.150023f, 10.005798f);
+BoundingBox bbox = new BoundingBox(55.474184, 12.403564, 55.736389, 12.878723);
 
-var route = await client.GetRouteAsync("SWR30K");
+client.StartProximityTracking(bbox);
+
+var route = await client.GetRouteAsync("FIN1CW");
 
 Console.WriteLine($"callsign {route.Callsign}, Route from: {route.Route[0]}, Route to: {route.Route[1]}, OperatorIata: {route.OperatorIata}, FlightNumber: {route.FlightNumber}");
 Console.ReadKey();

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,7 +35,16 @@ namespace OpenSkyNetworkClient
 
                     if (ifs != null)
                     {
-                        ifs.Update(flight);
+
+                        if(ifs.FlightRoute == null)
+                        {
+                            IFlightRoute flightRoute = await client.GetRouteAsync(ifs);
+                            ifs.Update(flight, flightRoute);
+                        }
+                        else
+                        {
+                            ifs.Update(flight);
+                        }
                     }
                 }
 

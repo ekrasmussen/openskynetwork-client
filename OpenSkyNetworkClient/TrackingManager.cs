@@ -23,8 +23,8 @@ namespace OpenSkyNetworkClient
         {
             while(!token.IsCancellationRequested)
             {
-                await Task.Delay(5000);
                 await OnTick(token);
+                await Task.Delay(5000);
             }
 
         }

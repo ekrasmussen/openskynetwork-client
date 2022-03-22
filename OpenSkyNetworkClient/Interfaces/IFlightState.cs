@@ -98,6 +98,8 @@ namespace OpenSkyNetworkClient.Interfaces
         /// </summary>
         int PositionSource { get; }
 
-        public void Update(IFlightState flightState);
+        IFlightRoute FlightRoute { get; }
+
+        public void Update(IFlightState flightState, IFlightRoute flightRoute = null);
     }
 }

@@ -34,8 +34,8 @@ namespace OpenSkyNetworkClient.Model
         public bool Spi { get; set; }
         public int PositionSource { get; set; }
         public float? TrueTrack { get; set; }
-
-        public void Update(IFlightState flightState)
+        public IFlightRoute? FlightRoute { get; set; }
+        public void Update(IFlightState flightState, IFlightRoute flightRoute = null)
         {
             Icao24 = flightState.Icao24;
             CallSign = flightState.CallSign;
@@ -55,6 +55,12 @@ namespace OpenSkyNetworkClient.Model
             Spi = flightState.Spi;
             PositionSource = flightState.PositionSource;
             TrueTrack = flightState.TrueTrack;
+
+            if( flightRoute != null )
+            {
+                FlightRoute = flightRoute;
+                Console.WriteLine($"ROUTE FOUND: Callsign {flightRoute.Callsign}, Route from: {flightRoute.Route[0]}, Route to: {flightRoute.Route[1]}, OperatorIata: {flightRoute.OperatorIata}, FlightNumber: {flightRoute.FlightNumber}");
+            }
             Console.WriteLine("UPDATED");
         }
     }
