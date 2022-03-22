@@ -8,7 +8,7 @@ namespace OpenSkyNetworkClient.Tool
 {
     static class RequestStringBuilder
     {
-        public static string Create(Dictionary<string, object> dict)
+        public static string CreateIcao24(Dictionary<string, object> dict)
         {
             string query = string.Empty;
 
@@ -27,7 +27,7 @@ namespace OpenSkyNetworkClient.Tool
             return query;
         }
 
-        public static string Create(string[] icaos)
+        public static string CreateIcao24(string[] icaos)
         {
             string query = "?";
 
@@ -38,6 +38,12 @@ namespace OpenSkyNetworkClient.Tool
 
             query.TrimEnd('&');
 
+            return query;
+        }
+
+        public static string CreateCallsign(string callsign)
+        {
+            string query = $"?callsign={callsign}";
             return query;
         }
     }

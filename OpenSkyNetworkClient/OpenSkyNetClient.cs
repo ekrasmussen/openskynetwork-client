@@ -44,8 +44,18 @@ namespace OpenSkyNetworkClient
         }
         public Task<IFlightStates> GetProximityStatesAsync(BoundingBox bbox, CancellationToken token = default) => GetStatesBasicAsync("states/all", null, bbox, token);
 
-        public Task<IFlightRoute> GetRouteAsync(IFlightState state, CancellationToken token = default) => throw new NotImplementedException();
-        //To be implemented
+        public Task<IFlightRoute> GetRouteAsync(IFlightState state, CancellationToken token = default) => GetRouteBasicAsync("routes", state.CallSign);
+        public Task<IFlightRoute> GetRouteAsync(string callsign, CancellationToken token = default) => GetRouteBasicAsync("routes", callsign);
+
+        Task<IFlightRoute> GetRouteBasicAsync(string query, string callsign, CancellationToken token = default)
+        {
+            if(callsign != String.Empty && callsign.Length > 0)
+            {
+                query += RequestStringBuilder.CreateCallsign(callsign);
+            }
+
+            return GetAsync<IFlightRoute>(query, token);
+        }
 
         Task<IFlightStates> GetStatesBasicAsync(string query, string[] icao24s = null, BoundingBox bbox = null, CancellationToken token = default)
         {
@@ -53,7 +63,7 @@ namespace OpenSkyNetworkClient
 
             if (icao24s != null && icao24s.Length > 0)
             {
-                query += RequestStringBuilder.Create(icao24s);
+                query += RequestStringBuilder.CreateIcao24(icao24s);
             }
 
             else if (bbox != null)
@@ -64,7 +74,7 @@ namespace OpenSkyNetworkClient
                 dict.Add("lamax", bbox.MaxLat);
                 dict.Add("lomax", bbox.MaxLon);
 
-                query += RequestStringBuilder.Create(dict);
+                query += RequestStringBuilder.CreateIcao24(dict);
             }
             Console.WriteLine(query);
             return GetAsync<IFlightStates>(query, token);
