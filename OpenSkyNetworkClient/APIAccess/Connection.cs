@@ -42,7 +42,7 @@ namespace OpenSkyNetworkClient.APIAccess
                 }
             }
 
-            throw new OpenSkyNetException($"{ response.StatusCode } - {response.ReasonPhrase}");
+            return default(TResult);
         }
 
 
