@@ -56,6 +56,13 @@ namespace OpenSkyNetworkClient
             proximityGroup.UpdateBoundingBox(bbox);
         }
 
+        public void StartProximityTracking(string minlat, string minlon, string maxlat, string maxlon)
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+            BoundingBox bbox = new BoundingBox(double.Parse(minlat), double.Parse(minlon), double.Parse(maxlat), double.Parse(maxlon));
+            StartProximityTracking(bbox);
+        }
+
         public void StopTracking(string icao24)
         {
             customGroup.Unsubscribe(icao24);

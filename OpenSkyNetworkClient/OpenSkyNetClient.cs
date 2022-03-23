@@ -15,7 +15,7 @@ namespace OpenSkyNetworkClient
     public class OpenSkyNetClient : Connection
     {
 
-        readonly TrackingManager trackingManager;
+        public TrackingManager trackingManager;
         readonly CancellationTokenSource tokenSource = new CancellationTokenSource();
 
         public OpenSkyNetClient()
@@ -27,6 +27,7 @@ namespace OpenSkyNetworkClient
         public void StopTracking(string icao24) => trackingManager.StopTracking(icao24);
 
         public void StartProximityTracking(BoundingBox bbox) => trackingManager.StartProximityTracking(bbox);
+        public void StartProximityTracking(string minlat, string minlon, string maxlat, string maxlon) => trackingManager.StartProximityTracking(minlat, minlon, maxlat, maxlon);
         public void StopProximityTracking() => trackingManager.StopProximityTracking();
 
         public Task<IFlightStates> GetAllStatesAsync(CancellationToken token = default) => GetStatesBasicAsync("states/all", null, null, token);
@@ -80,12 +81,12 @@ namespace OpenSkyNetworkClient
             return GetAsync<IFlightStates>(query, token);
         }
 
-        public ObservableCollection<IFlightState> GetCustomList()
+        public List<IFlightState> GetCustomList()
         {
             return trackingManager.customGroup.Observers;
         }
 
-        public ObservableCollection<IFlightState> GetProximityList()
+        public List<IFlightState> GetProximityList()
         {
             return trackingManager.proximityGroup.Observers;
         }

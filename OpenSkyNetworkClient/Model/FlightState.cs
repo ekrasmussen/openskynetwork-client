@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace OpenSkyNetworkClient.Model
 {
     [JsonConverter(typeof(FlightStateConverter))]
-    class FlightState : IFlightState
+    public class FlightState : IFlightState
     {
         public FlightState(string icao)
         {

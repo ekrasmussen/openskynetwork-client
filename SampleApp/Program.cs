@@ -4,11 +4,23 @@ using OpenSkyNetworkClient.Model;
 
 OpenSkyNetClient client = new OpenSkyNetClient();
 
-BoundingBox bbox = new BoundingBox(57.040730, 9.656982, 58.222811, 12.864990);
+client.StartTracking("407797");
+otherTask();
 
-client.StartProximityTracking(bbox);
+for(int i = 0; i < 1000; i++)
+{
+    await Task.Delay(5000);
+    foreach(var flight in client.GetCustomList())
+    {
+        Console.WriteLine($"icao24: {flight.Icao24}");
+    }
+}
 
-var route = await client.GetRouteAsync("FIN1CW");
-
-Console.WriteLine($"callsign {route.Callsign}, Route from: {route.Route[0]}, Route to: {route.Route[1]}, OperatorIata: {route.OperatorIata}, FlightNumber: {route.FlightNumber}");
+async Task otherTask()
+{
+    await Task.Delay(10000);
+    client.StartTracking("4d2242");
+    await Task.Delay(50000);
+    client.StartTracking("c0816e");
+}
 Console.ReadKey();

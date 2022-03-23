@@ -12,11 +12,11 @@ namespace OpenSkyNetworkClient
 {
     public class ProximityTrackingGroup : TrackingGroup
     {
-        public ObservableCollection<IFlightState> Observers { get; }
+        public List<IFlightState> Observers { get; }
         BoundingBox bbox;
         public ProximityTrackingGroup(OpenSkyNetClient client) : base(client)
         {
-            Observers = new ObservableCollection<IFlightState>();
+            Observers = new List<IFlightState>();
         }
 
         public async Task Update()

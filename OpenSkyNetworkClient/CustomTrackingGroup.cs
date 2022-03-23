@@ -11,11 +11,11 @@ namespace OpenSkyNetworkClient
 {
     public class CustomTrackingGroup : TrackingGroup
     {
-        public ObservableCollection<IFlightState> Observers { get; }
+        public List<IFlightState> Observers { get; }
 
         public CustomTrackingGroup(OpenSkyNetClient client) : base(client)
         {
-            Observers = new ObservableCollection<IFlightState>();
+            Observers = new List<IFlightState>();
         }
 
         public async Task Update()
