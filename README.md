@@ -11,6 +11,7 @@ A package for using the OpenSkynetwork API
 
 ## To-do list:
 
+* Multiple tracking groups at once
 * Track flights from your own transpoders
 * Google Static Maps API implementation
 * Convert address and radius to proximity bounding box
