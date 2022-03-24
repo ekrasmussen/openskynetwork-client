@@ -15,3 +15,5 @@ A package for using the OpenSkynetwork API
 * Track flights from your own transpoders
 * Google Static Maps API implementation
 * Convert address and radius to proximity bounding box
+
+_inspired by the no longer maintained OpenSkyNet project by schulz3000, https://github.com/schulz3000/OpenSkyNet_
