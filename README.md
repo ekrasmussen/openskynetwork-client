@@ -16,4 +16,8 @@ A package for using the OpenSkynetwork API
 * Google Static Maps API implementation
 * Convert address and radius to proximity bounding box
 
-_inspired by the OpenSkyNet project by schulz3000, https://github.com/schulz3000/OpenSkyNet_
+##Inspiration
+
+This project was inspired by the OpenSkyNet project by schulz3000, main goal of the project was to learn more about how to deserialize JSON from API calls, and applying the observer pattern to an actual project
+
+_schulz3000's repository can be found here: https://github.com/schulz3000/OpenSkyNet_
