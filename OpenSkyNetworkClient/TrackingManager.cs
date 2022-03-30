@@ -26,7 +26,6 @@ namespace OpenSkyNetworkClient
                 await OnTick(token);
                 await Task.Delay(5000);
             }
-
         }
 
         async Task OnTick(CancellationToken token)

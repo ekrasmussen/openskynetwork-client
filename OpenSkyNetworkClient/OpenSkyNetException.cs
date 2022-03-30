@@ -9,7 +9,6 @@ namespace OpenSkyNetworkClient
 {
     public class OpenSkyNetException : Exception
     {
-
         public OpenSkyNetException()
         {
         }
