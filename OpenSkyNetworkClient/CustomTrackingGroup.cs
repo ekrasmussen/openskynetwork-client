@@ -1,11 +1,5 @@
 ﻿using OpenSkyNetworkClient.Interfaces;
 using OpenSkyNetworkClient.Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
@@ -20,7 +14,7 @@ namespace OpenSkyNetworkClient
 
         public async Task Update()
         {
-            if(Observers != null && Observers.Count > 0)
+            if (Observers != null && Observers.Count > 0)
             {
                 var flights = await client.GetCustomStatesAsync(Observers.Select(s => s.Icao24).ToArray());
 
@@ -47,7 +41,7 @@ namespace OpenSkyNetworkClient
 
         public void Subscribe(string icao24)
         {
-            if(!Observers.Any(s => s.Icao24 == icao24))
+            if (!Observers.Any(s => s.Icao24 == icao24))
             {
                 IFlightState flight = new FlightState(icao24);
                 Observers.Add(flight);

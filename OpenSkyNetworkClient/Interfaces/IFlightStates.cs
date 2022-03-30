@@ -2,11 +2,6 @@
 using Newtonsoft.Json.Converters;
 using OpenSkyNetworkClient.Converters;
 using OpenSkyNetworkClient.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient.Interfaces
 {

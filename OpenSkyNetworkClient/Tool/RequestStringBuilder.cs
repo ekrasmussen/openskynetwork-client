@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpenSkyNetworkClient.Tool
+﻿namespace OpenSkyNetworkClient.Tool
 {
     static class RequestStringBuilder
     {
@@ -12,11 +6,11 @@ namespace OpenSkyNetworkClient.Tool
         {
             string query = string.Empty;
 
-            if(dict != null && dict.Count > 0)
+            if (dict != null && dict.Count > 0)
             {
                 query += "?";
 
-                foreach(var key in dict.Keys)
+                foreach (var key in dict.Keys)
                 {
                     query += $"{key}={dict[key]}&";
                 }
@@ -31,7 +25,7 @@ namespace OpenSkyNetworkClient.Tool
         {
             string query = "?";
 
-            foreach(string icao in icaos)
+            foreach (string icao in icaos)
             {
                 query += $"icao24={icao}&";
             }

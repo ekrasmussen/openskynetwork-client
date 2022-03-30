@@ -2,13 +2,7 @@
 using OpenSkyNetworkClient.Interfaces;
 using OpenSkyNetworkClient.Model;
 using OpenSkyNetworkClient.Tool;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
@@ -19,7 +13,7 @@ namespace OpenSkyNetworkClient
 
         public OpenSkyNetClient()
         {
-            trackingManager = new TrackingManager(this, tokenSource.Token);            
+            trackingManager = new TrackingManager(this, tokenSource.Token);
         }
 
         public void StartTracking(string icao24) => trackingManager.StartTracking(icao24);
@@ -32,7 +26,7 @@ namespace OpenSkyNetworkClient
         public Task<IFlightStates> GetAllStatesAsync(CancellationToken token = default) => GetStatesBasicAsync("states/all", null, null, token);
         public Task<IFlightStates> GetCustomStatesAsync(string[] icao24s, CancellationToken token = default)
         {
-            if( icao24s != null && icao24s.Length > 0)
+            if (icao24s != null && icao24s.Length > 0)
             {
                 return GetStatesBasicAsync("states/all", icao24s, null, token);
             }
@@ -48,7 +42,7 @@ namespace OpenSkyNetworkClient
 
         Task<IFlightRoute> GetRouteBasicAsync(string query, string callsign, CancellationToken token = default)
         {
-            if(callsign != String.Empty && callsign.Length > 0)
+            if (callsign != String.Empty && callsign.Length > 0)
             {
                 query += RequestStringBuilder.CreateCallsign(callsign);
             }

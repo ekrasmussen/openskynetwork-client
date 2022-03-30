@@ -1,12 +1,5 @@
 ﻿using OpenSkyNetworkClient.Interfaces;
 using OpenSkyNetworkClient.Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
@@ -21,7 +14,7 @@ namespace OpenSkyNetworkClient
 
         public async Task Update()
         {
-            if(bbox != null)
+            if (bbox != null)
             {
                 IFlightStates flights = await client.GetProximityStatesAsync(bbox);
 
@@ -43,7 +36,7 @@ namespace OpenSkyNetworkClient
         async void AddEnteringFlights(IFlightState[] states)
         {
             IEnumerable<IFlightState> enteringFlights = states.ExceptBy(Observers.Select(o => o.Icao24), s => s.Icao24).ToList();
-            foreach(var lf in enteringFlights)
+            foreach (var lf in enteringFlights)
             {
                 Console.WriteLine($"FLIGHT {lf.Icao24} ENTERED AIRSPACE");
                 FindRoute(lf);
@@ -54,7 +47,7 @@ namespace OpenSkyNetworkClient
         void RemoveLeavingFlights(IFlightState[] states)
         {
             IEnumerable<IFlightState> leavingFlights = Observers.ExceptBy(states.Select(s => s.Icao24), o => o.Icao24).ToList();
-            foreach(var lf in leavingFlights)
+            foreach (var lf in leavingFlights)
             {
                 Console.WriteLine($"FLIGHT {lf.Icao24} LEFT AIRSPACE");
                 Observers.Remove(lf);

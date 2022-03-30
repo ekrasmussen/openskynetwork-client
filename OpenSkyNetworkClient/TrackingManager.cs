@@ -1,9 +1,4 @@
 ﻿using OpenSkyNetworkClient.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenSkyNetworkClient
 {
@@ -21,7 +16,7 @@ namespace OpenSkyNetworkClient
 
         async Task StartTimer(CancellationToken token)
         {
-            while(!token.IsCancellationRequested)
+            while (!token.IsCancellationRequested)
             {
                 await OnTick(token);
                 await Task.Delay(5000);
