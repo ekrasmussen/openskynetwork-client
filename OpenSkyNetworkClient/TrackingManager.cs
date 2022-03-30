@@ -10,7 +10,7 @@ namespace OpenSkyNetworkClient
     public class TrackingManager
     {
         public CustomTrackingGroup customGroup { get; }
-        public ProximityTrackingGroup proximityGroup {get;} 
+        public ProximityTrackingGroup proximityGroup { get; }
 
         public TrackingManager(OpenSkyNetClient client, CancellationToken token)
         {
@@ -45,7 +45,6 @@ namespace OpenSkyNetworkClient
             await proximityGroup.Update();
         }
 
-
         public void StartTracking(string icao24)
         {
             customGroup.Subscribe(icao24);
@@ -72,6 +71,5 @@ namespace OpenSkyNetworkClient
         {
             proximityGroup.EndTracking();
         }
-
     }
 }

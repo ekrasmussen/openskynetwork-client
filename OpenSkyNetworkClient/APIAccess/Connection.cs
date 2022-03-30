@@ -17,7 +17,6 @@ namespace OpenSkyNetworkClient.APIAccess
 
         protected bool HasCredentials => client.DefaultRequestHeaders.Authorization != null;
 
-
         protected Connection()
         {
             client = new HttpClient(new HttpClientHandler());
@@ -26,7 +25,6 @@ namespace OpenSkyNetworkClient.APIAccess
 
             serializer = new JsonSerializer();
         }
-
 
         protected async Task<TResult> GetAsync<TResult>(string uriPath, CancellationToken token = default)
         {
@@ -45,13 +43,11 @@ namespace OpenSkyNetworkClient.APIAccess
             return default(TResult);
         }
 
-
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
 
         protected virtual void OnDispose()
         {

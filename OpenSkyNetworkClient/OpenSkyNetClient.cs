@@ -14,13 +14,12 @@ namespace OpenSkyNetworkClient
 {
     public class OpenSkyNetClient : Connection
     {
-
         public TrackingManager trackingManager;
         readonly CancellationTokenSource tokenSource = new CancellationTokenSource();
 
         public OpenSkyNetClient()
         {
-            trackingManager = new TrackingManager(this, tokenSource.Token);
+            trackingManager = new TrackingManager(this, tokenSource.Token);            
         }
 
         public void StartTracking(string icao24) => trackingManager.StartTracking(icao24);
@@ -37,7 +36,6 @@ namespace OpenSkyNetworkClient
             {
                 return GetStatesBasicAsync("states/all", icao24s, null, token);
             }
-
             else
             {
                 return null;
@@ -66,7 +64,6 @@ namespace OpenSkyNetworkClient
             {
                 query += RequestStringBuilder.CreateIcao24(icao24s);
             }
-
             else if (bbox != null)
             {
                 Dictionary<string, object> dict = new Dictionary<string, object>();
@@ -74,7 +71,6 @@ namespace OpenSkyNetworkClient
                 dict.Add("lomin", bbox.MinLon);
                 dict.Add("lamax", bbox.MaxLat);
                 dict.Add("lomax", bbox.MaxLon);
-
                 query += RequestStringBuilder.CreateIcao24(dict);
             }
             Console.WriteLine(query);

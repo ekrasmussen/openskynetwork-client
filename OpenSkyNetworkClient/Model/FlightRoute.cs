@@ -18,11 +18,8 @@ namespace OpenSkyNetworkClient.Model
         public string OperatorIata { get; set; }
         public int FlightNumber { get; set; }
 
-
         public FlightRoute()
         {
-                
         }
-
     }
 }

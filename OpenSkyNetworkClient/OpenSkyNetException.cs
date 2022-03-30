@@ -14,12 +14,10 @@ namespace OpenSkyNetworkClient
         {
         }
 
-
         public OpenSkyNetException(string message)
             : base(message)
         {
         }
-
 
         public OpenSkyNetException(string message, Exception innerException)
             : base(message, innerException)
@@ -35,4 +33,3 @@ namespace OpenSkyNetworkClient
 #endif
     }
 }
-
