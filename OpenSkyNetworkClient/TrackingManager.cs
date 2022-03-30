@@ -1,4 +1,5 @@
 ﻿using OpenSkyNetworkClient.Model;
+using System.Globalization;
 
 namespace OpenSkyNetworkClient
 {
